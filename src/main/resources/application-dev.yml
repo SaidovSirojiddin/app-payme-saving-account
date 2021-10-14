@@ -1,0 +1,34 @@
+server:
+  port: 88
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/users
+    username: postgres
+    password: root123
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        enable_lazy_load_no_trans:true
+  sql:
+    init:
+      mode: always
+logging:
+  pattern:
+    file: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+  file:
+    name: paynet.log
+  level:
+    org.springframework.web: ERROR
+    org.hibernate: ERROR
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka:123456@localhost:8761/eureka
+  instance:
+    hostname: localhost
